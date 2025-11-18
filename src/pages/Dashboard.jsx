@@ -102,22 +102,28 @@ export default function Dashboard() {
   }));
 
   // AI tips
-  async function askAITips() {
-  setLoadingTips(true);
+  async function getTips(summary) {
   try {
     const res = await fetch("/.netlify/functions/aiTips", {
       method: "POST",
-      body: JSON.stringify({ summary: "..." }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ summary }),
     });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to fetch AI tips");
+    }
+
     const data = await res.json();
-    setAiTips(data.tips);
-  } catch (err) {
-    setAiTips("⚠️ AI tip error.");
-    console.error(err);
-  } finally {
-    setLoadingTips(false);
+    return data.tips;
+
+  } catch (error) {
+    console.error("Error fetching AI tips:", error);
+    return "Could not fetch tips at this time.";
   }
 }
+
 
   // Spending summary values
   const totalSpent = expenses.reduce((s, e) => s + Number(e.cost || 0), 0);
