@@ -102,26 +102,24 @@ export default function Dashboard() {
   }));
 
   // AI tips
-  async function getTips(summary) {
+  async function askAITips() {
+  setLoadingTips(true);
+  const summary = `My total expenses are ${totalSpent} AFN this month.`;
   try {
     const res = await fetch("/.netlify/functions/aiTips", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ summary }),
     });
-
-    if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.error || "Failed to fetch AI tips");
-    }
-
     const data = await res.json();
-    return data.tips;
-  } catch (error) {
-    console.error(error);
-    return "Could not fetch tips at this time.";
+    setAiTips(data.tips);
+  } catch (err) {
+    console.error(err);
+    setAiTips("Failed to fetch tips.");
+  } finally {
+    setLoadingTips(false);
   }
-}
+  }
 
 
 
