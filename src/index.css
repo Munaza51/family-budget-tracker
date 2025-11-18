@@ -1,0 +1,484 @@
+/* =======================
+   Variables & Theme
+======================= */
+:root {
+  --radius: 14px;
+  --accent: #6366f1;
+  --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --bg-light: #f9f9f9;
+  --bg-dark: #1f2937;
+  --text-dark: #111827;
+  --text-muted: #6b7280;
+  --card-bg: #fff;
+  --shadow: 0 6px 20px rgba(0,0,0,0.08);
+  --transition: all 0.3s ease;
+  --font: 'Inter', sans-serif;
+}
+
+/* =======================
+   Global Styles
+======================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+h1,h2,h3,h4 {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+button {
+  cursor: pointer;
+  border-radius: var(--radius);
+  border: none;
+  transition: var(--transition);
+}
+
+/* =======================
+   Hero Section
+======================= */
+.dashboard-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  background: var(--accent-gradient);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 50px 25px;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.dashboard-hero .text {
+  flex: 1;
+}
+
+.dashboard-hero h1 {
+  font-size: 2.8rem;
+}
+
+.dashboard-hero p {
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+.dashboard-hero .hero-img {
+  flex: 1;
+  max-width: 450px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.dashboard-hero .hero-img:hover {
+  transform: scale(1.03);
+}
+
+/* =======================
+   Navbar
+======================= */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Adjusted to fit your preference */
+  align-items: center;
+  background-color: var(--dark-color); /* Matching the dark theme */
+  color: var(--white-color);
+  padding: 10px 20px; /* Adjusted padding */
+  border-radius: var(--radius); /* Assuming you have this variable defined */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  position: sticky;
+  top: 0;
+  z-index: var(--z-fixed);
+}
+
+/* Navbar links */
+.navbar a {
+  color: var(--white-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px; /* Updated padding */
+  border-radius: var(--radius);
+  font-size: var(--normal-font-size); /* Responsive font-size */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar link hover effect */
+.navbar a:hover {
+  color: var(--first-color);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+}
+
+/* Mobile responsive menu toggle */
+.navbar__toggle {
+  display: none; /* Hide on larger screens */
+  font-size: 1.5rem;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+/* Adjusting navbar on mobile screens */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack items vertically on small screens */
+    padding: 20px; /* Add more padding for better mobile spacing */
+  }
+
+  .navbar__toggle {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .navbar a {
+    padding: 10px;
+    font-size: var(--small-font-size); /* Smaller font on mobile */
+  }
+}
+
+/* =======================
+   Cards & Panels
+======================= */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 30px;
+  margin-bottom: 35px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.card.gradient {
+  background: var(--accent-gradient);
+  color: #fff;
+}
+
+.card.highlight {
+  background: #f0f4ff;
+}
+
+/* =======================
+   Dashboard Grid
+======================= */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* =======================
+   Forms
+======================= */
+form.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+form input, form select {
+  padding: 12px 15px;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+form button[type="submit"] {
+  background: var(--accent);
+  color: #fff;
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: var(--radius);
+}
+
+form button[type="submit"]:hover {
+  background: #4c51bf;
+}
+
+/* =======================
+   Tables / Expense List
+======================= */
+.expense-list table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card-bg);
+}
+
+.expense-list th, .expense-list td {
+  padding: 16px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  font-size: 16px;
+}
+
+.expense-list th {
+  background: var(--accent-gradient);
+  color: #fff;
+  font-weight: 600;
+}
+
+.expense-list .muted {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+button.small {
+  background: var(--accent-gradient);
+  color: #fff;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius);
+}
+
+button.small:hover {
+  background: #4c51bf;
+}
+
+/* =======================
+   Pie Chart
+======================= */
+.chart-card {
+  height: auto;
+}
+
+.summary-box {
+  background: #f3f4f6;
+  border-radius: var(--radius);
+  padding: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.summary-box h1 {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+/* =======================
+   AI Tips
+======================= */
+.ai-tips {
+  display: flex;
+  gap: 14px;
+  background: #f0f4ff;
+  padding: 18px;
+  border-radius: var(--radius);
+  margin-top: 20px;
+  align-items: center;
+}
+
+.ai-tips h4 {
+  margin-bottom: 5px;
+}
+
+/* =======================
+   Essentials Checklist
+======================= */
+.essentials-page .card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.essentials-add {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.essentials-add input {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.essentials-add button {
+  background: var(--accent-gradient);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  font-weight: 500;
+}
+
+.essentials-add button:hover {
+  background: #4c51bf;
+}
+
+.essentials-filters {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.essentials-filters button {
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  background: #e5e7eb;
+  color: var(--text-dark);
+}
+
+.essentials-filters button.active {
+  background: var(--accent-gradient);
+  color: #fff;
+}
+
+.essentials-list-modern {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.essentials-list-modern li {
+  background: #f9fafb;
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.essentials-list-modern li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.essentials-list-modern li.done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.essentials-list-modern li .actions button {
+  background: transparent;
+  color: #6b7280;
+}
+
+.essentials-list-modern li .actions button:hover {
+  color: var(--accent);
+}
+
+/* =======================
+   About Page
+======================= */
+.about-section .feature-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.feature-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  flex: 1 1 280px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.feature-card img {
+  width: 100%;
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+}
+
+.feature-card.active {
+  border: 2px solid var(--accent);
+}
+
+/* =======================
+   Buttons & Links
+======================= */
+.about-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  background: var(--accent-gradient);
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+  margin-top: 15px;
+}
+
+.about-btn:hover {
+  background: #4c51bf;
+}
+
+/* =======================
+   Responsive
+======================= */
+@media (max-width: 768px) {
+  .dashboard-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .dashboard-hero .hero-img {
+    max-width: 100%;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-section .feature-cards {
+    flex-direction: column;
+  }
+  }
+
+
+
+
+
+
