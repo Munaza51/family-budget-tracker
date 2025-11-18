@@ -107,10 +107,10 @@ export default function Dashboard() {
   const summary = `My total expenses are ${totalSpent} AFN this month.`;
   try {
     const res = await fetch("/.netlify/functions/aiTips", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ summary }),
-    });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ summary }),
+});
     const data = await res.json();
     setAiTips(data.tips);
   } catch (err) {
