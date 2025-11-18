@@ -1,6 +1,6 @@
 [build]
-  publish = "dist"
-  command = "npm run build"
+  publish = "dist"            # فولدر خروجی build
+  command = "npm run build"   # دستور build
 
 [functions]
-  directory = ".netlify/functions"
+  directory = ".netlify/functions"  # فولدر فانکشن‌ها
