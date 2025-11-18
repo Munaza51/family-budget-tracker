@@ -1,6 +1,6 @@
 [build]
   publish = "dist"        # یا build اگر از CRA استفاده می‌کنی
-  functions = "netlify/functions"
+  functions = ".netlify/functions"
 
 [dev]
-  functions = "netlify/functions"
+  functions = ".netlify/functions"
