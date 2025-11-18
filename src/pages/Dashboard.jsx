@@ -117,12 +117,12 @@ export default function Dashboard() {
 
     const data = await res.json();
     return data.tips;
-
   } catch (error) {
-    console.error("Error fetching AI tips:", error);
+    console.error(error);
     return "Could not fetch tips at this time.";
   }
 }
+
 
 
   // Spending summary values
